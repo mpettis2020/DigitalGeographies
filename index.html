@@ -1,1 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style> /*CSS Goes Here */
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+}
+.container{display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
+
+}
+#tabcontent{font-size: 0;}
+/* Style tab links */
+.tablink {
+  flex: 1 1 auto;
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 15px 20px;
+  font-size: 20px;
+  width: 25%;
+  transition: 3s;
+  font-family: 'Montserrat', sans-serif;
+
+}
+
+.tablink:hover {
+  background-position:left center; /* change the direction of the change here but doesn't work*/
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display:none;
+  padding: 100px 20px;
+  height:100%; /* */
+  font-size: 40px;
+  font-family: 'Montserrat', sans-serif;
+}
+.tab-1{animation: colorchange 10s linear 0s infinite; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation: colorchange 10s linear 0s infinite alternate; /* Chrome and Safari */
+    }
+
+    @keyframes colorchange
+    {
+      0%   {background: #F97B09; color: #DB7C27;}
+      50%  {background: #CB7D35; color: #AD7E53;}
+      100% {background: #9E7E62; color: #8F7F71;}
+   }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: #F97B09; color: #DB7C27;}
+      50%  {background: #CB7D35; color: #AD7E53;}
+      100% {background: #9E7E62; color: #8F7F71;}}/* These are to add gradient colors to tabs */
+.tab-2{background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);}
+.tab-3{background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);}
+.tab-4{background-color: blue;}
+#Home {animation: colorchange 60s linear 1s infinite; /* animation-name followed by duration in seconds*/
+         /* you could also use milliseconds (ms) or something like 2.5s */
+      -webkit-animation: colorchange 60s linear 0s infinite alternate; /* Chrome and Safari */
+    }
+
+    @keyframes colorchange
+    {
+      0%   {background: red; color: cyan;}
+      33%  {background: green; color: magenta;}
+      66%  {background: blue; color: yellow;}
+      100% {background: red; color: cyan;}
+   }
+
+    @-webkit-keyframes colorchange /* Safari and Chrome - necessary duplicate */
+    {
+      0%   {background: red; color: cyan;}
+      33%  {background: green; color: magenta;}
+      66%  {background: blue; color: yellow;}
+      100% {background: red; color: cyan;}
+   }
+#About {background-color: orange;background-image: linear-gradient(to right, #fbc2eb 0%, #a6c1ee 51%, #fbc2eb 100%);}
+#Studios {background-color: green;background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 51%, #84fab0 100%);}
+#Galaga {background-color: blue;}
+p1{font-size:25px;
+font-style: italic;
+color: yellow;
+line-height: normal;
+font-family:"papyrus";}
+a.two{color:Red;}
+.btn{
+  display: inline-block;
+  border-radius: 3px;
+  background-color: blue;
+  border-color: white;
+  color: #fbc2eb;
+  text-align: center;
+  font-size: 20px;
+  font-style:papyrus;
+  padding: 20px;
+  cursor: pointer;
+  .btn span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+
+  .btnspan:after {
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+  }
+
+  .btn:hover span {
+    padding-right: 25px;
+  }
+
+  .btn:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
+}
+</style>
+</head>
+
+<body><!-- Adding HTML Here-->
+<button class="tablink tab-1" onclick="openPage('Home', this,)" id="defaultOpen">Home</button>
+<button class="tablink tab-2" onclick="openPage('About', this, 'orange')">About</button>
+<button class="tablink tab-3" onclick="openPage('Studios', this, 'green')">Studios</button>
+<button class="tablink tab-4" onclick="openPage('Galaga', '1981', this, 'blue')">Galaga 1981</button> <!-- added the '1981' here, probably unneeded-->
+
+<div id="Home" class="tabcontent">
+  <h3>Landing Page</h3>
+  <p>This is an experimental collection of work made by Maria Pettis for Clancy Wilmot's Digital Geography / New Media Course, held Spring 2021.</p>
+</div>
+
+<div id="About" class="tabcontent">
+  <h3>Maria Pettis</h3>
+  <img src="https://berkeley.box.com/shared/static/02o9wuu6gawsd87d22ukxdinkdwf4p47.gif" alt="Kepnitz Gif" style="width:100px;height:100px;">
+  <p>I am a PhD student in the UC Berkeley department of Geography.</p>
+  <!-- Goal Add a image button that opens hidden Iframe on click-->
+<button class="btn" id="button1" onclick="toShow();"target="demo1" style="vertical-align:middle"><span> PhD Vibes</span></button>
+    <iframe id='demo1' style="display:none" width="500" height="315" src="https://www.youtube-nocookie.com/embed/LUn7A07cO88?start=27&end=56" frameborder="5" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<br>
+</div>
+<div id="Studios" class="tabcontent">
+  <h3>Studios</h3>
+  <p>Here are links to each week's studio created in this course. </p>
+  <a href="https://mpettis2020.github.io/DigitalGeographies/Studio1.html" target="_blank"> Studio 1</a>
+  <a href="https://mpettis2020.github.io/DigitalGeographies/Studio2.html">Studio 2</a>
+<br>
+  <p1>Here is a custom map of a roadtrip from a Locative Media course.</p1>
+ <iframe title="mymap" scrolling="no" width="600px" height="400px" src="https://mpettis2020.github.io/locativemedia/index.html"> </iframe>
+</div>
+<div id="Galaga" class="tabcontent" >
+  <h3>Play Galaga 1981!</h3>
+  <p>Take a break and play my favorite arcade game. This is an Iframe of an HTML5 version of the classic arcade game originally created by Namco in the 1980's. <br> <a href="https://mpettis2020.github.io/DigitalGeographies/galaga.html" class="two" target="1981"> Enjoy!</a> </p>
+  <iframe title="GalagaHTML5" name="1981" class="iframe" scrolling="no" width="100%" height="100%" style="border:none;" ></iframe> <!-- Issue is that the game is not sized correctly it is too small, maybe issue is tab content. If I place this line of code outside div tag it is correctly sized but taxes over each tab!?-->
+</div>
+
+<script>//Add the JS here//
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "none";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+
+function toShow(){// This gets button to work on click//
+  var iframe =document.getElementById("demo1");
+  iframe.style.display="block";
+}
+</script>
+</body>
+</html>
 
